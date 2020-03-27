@@ -74,8 +74,18 @@ namespace LINQ_Examples
 
         static void Main(string[] args)
         {
-           
+            var custPurQuery =
+                 from c in customers
+                 from p in c.Purchases
+                 select new { Name = c.Last, Purchase = p };
+
+            foreach (var cust in custPurQuery)
+            {
+                Console.WriteLine("{0}, {1}", cust.Name,
+                    cust.Purchase);
+            }
             Console.ReadKey();
         }
     }
 }
+
